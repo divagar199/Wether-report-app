@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  padding: 20px;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: row; 
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 950px;
+  overflow: hidden;
+}
+
+.current-panel {
+  flex: 1.5;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.forecast-panel {
+  flex: 1;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-box {
+  display: flex;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  padding: 5px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px 15px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-box button {
+  background: #3b82f6;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.search-box button:hover {
+  background: #2563eb;
+}
+
+.header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header p {
+  margin: 5px 0 0 0;
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+.hero-temp {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.hero-temp h1 {
+  font-size: 80px;
+  font-weight: 500;
+  margin: -10px 0;
+}
+
+.hero-temp span {
+  font-size: 18px;
+  text-transform: capitalize;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+.grid-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.detail-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px 10px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.detail-card span {
+  display: block;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.detail-card p {
+  font-size: 12px;
+  margin: 0;
+  opacity: 0.7;
+}
+
+.forecast-panel h3 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.forecast-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.forecast-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 15px;
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+
+.forecast-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.day-name {
+  width: 50px;
+  font-weight: 500;
+}
+.forecast-temp {
+  font-weight: 600;
+}
+.forecast-desc {
+  font-size: 12px;
+  opacity: 0.7;
+  width: 60px;
+  text-align: right;
+}
+
+.start-msg {
+  text-align: center;
+  margin-top: 50px;
+  opacity: 0.5;
+}
+.error-msg {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@media (max-width: 968px) {
+  .dashboard {
+    flex-direction: column; 
+    max-width: 600px;
+  }
+
+  .forecast-panel {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  .current-panel,
+  .forecast-panel {
+    padding: 25px 20px;
+  }
+
+  .hero-temp h1 {
+    font-size: 60px;
+  }
+
+  .grid-details {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .detail-card {
+    padding: 10px 5px;
+  }
+
+  .detail-card span {
+    font-size: 14px;
+  }
+}
