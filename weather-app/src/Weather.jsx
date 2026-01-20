@@ -6,10 +6,8 @@ import {
   WiCloud,
   WiRain,
   WiSnow,
-  WiThunderstorm,
   WiHumidity,
   WiStrongWind,
-  WiBarometer,
   WiThermometer,
 } from "react-icons/wi";
 import { IoSearch, IoLocationSharp } from "react-icons/io5";
@@ -33,13 +31,10 @@ const Weather = () => {
       const currentUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
       const currentRes = await axios.get(currentUrl);
       setWeatherData(currentRes.data);
-
       const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`;
       const forecastRes = await axios.get(forecastUrl);
+      const dailyData = forecastRes.data.list.filter((_reading, index) => index % 8 === 0);
 
-      const dailyData = forecastRes.data.list.filter((reading) =>
-        reading.dt_txt.includes("12:00:00"),
-      );
       setForecastData(dailyData);
       setCity("");
     } catch (err) {
@@ -126,13 +121,13 @@ const Weather = () => {
         </div>
 
         <div className="forecast-panel">
-          <h3>5-Day Forecast</h3>
+          <h3>Upcoming Forecast</h3>
           <div className="forecast-list">
             {forecastData.length > 0 ? (
               forecastData.map((day, index) => (
                 <div key={index} className="forecast-card">
                   <p className="day-name">
-                    {format(new Date(day.dt * 1000), "EEE")}
+                    {index === 0 ? "Today" : format(new Date(day.dt * 1000), "EEE")}
                   </p>
                   <div className="forecast-icon">
                     {renderIcon(day.weather[0].main, 35)}
